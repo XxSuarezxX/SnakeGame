@@ -1,3 +1,26 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+
+
+# Carpeta de archivos generados por IntelliJ IDEA
+.idea/
+
+# Directorio de compilación
+out/
+
+# Archivos de compilación
+*.class
+
+# Archivos de registro y salida
+*.log
+
+# Archivos de configuración
+*.iml
+*.ipr
+*.iws
+*.xml
+
+# Directorio de dependencias
+lib/
+
