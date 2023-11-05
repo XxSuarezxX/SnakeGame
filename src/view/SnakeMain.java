@@ -1,4 +1,5 @@
 package view;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -29,13 +30,13 @@ public class SnakeMain {
                         g.fillRect(0, 0, getWidth(), getHeight());
                     }
                 };
+
                 menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
 
                 JLabel titleLabel = new JLabel("SNAKE GAME");
                 titleLabel.setForeground(Color.WHITE);
                 titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
                 titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-
                 JButton highScoresButton = new JButton("Mejores Puntajes");
                 highScoresButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -46,23 +47,20 @@ public class SnakeMain {
                         showHighScores(selectedDifficulty);
                     }
                 });
+
                 JPanel difficultyPanel = new JPanel();
                 difficultyPanel.setOpaque(false);
                 difficultyPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
-
                 JLabel difficultyLabel = new JLabel("Dificultad");
                 difficultyLabel.setForeground(Color.WHITE);
                 difficultyLabel.setFont(new Font("Arial", Font.BOLD, 16));
-
                 difficultyChoice = new Choice();
                 difficultyChoice.add("Fácil");
                 difficultyChoice.add("Medio");
                 difficultyChoice.add("Difícil");
                 difficultyChoice.setPreferredSize(new Dimension(100, 20));
-
                 difficultyPanel.add(difficultyLabel);
                 difficultyPanel.add(difficultyChoice);
-
                 JButton startButton = new JButton("Iniciar a Jugar");
                 startButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -90,6 +88,20 @@ public class SnakeMain {
                     }
                 });
 
+                JPanel imagePanel = new JPanel() {
+                    @Override
+                    protected void paintComponent(Graphics g) {
+                        super.paintComponent(g);
+                        Image img = new ImageIcon("src/resources/logoUPTC.png").getImage();
+                        int x = (getWidth() - img.getWidth(null)) / 2;
+                        int y = (getHeight() - img.getHeight(null)) / 2;
+                        g.drawImage(img, x, y, this);
+                    }
+                };
+
+                imagePanel.setPreferredSize(new Dimension(300, 200));
+                imagePanel.setOpaque(false);
+                menuPanel.add(imagePanel);
                 menuPanel.add(Box.createVerticalStrut(20));
                 menuPanel.add(titleLabel);
                 menuPanel.add(Box.createVerticalStrut(20));
@@ -159,7 +171,6 @@ public class SnakeMain {
             public void componentResized(ComponentEvent e) {
                 int width = gameFrame.getContentPane().getWidth();
                 int height = gameFrame.getContentPane().getHeight();
-
                 game.resizeGameArea(width, height);
             }
         });
@@ -168,5 +179,4 @@ public class SnakeMain {
         gameFrame.setLocationRelativeTo(null);
         gameFrame.setVisible(true);
     }
-
 }

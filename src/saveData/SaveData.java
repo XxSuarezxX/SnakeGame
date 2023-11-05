@@ -1,5 +1,4 @@
 package saveData;
-
 import score.ScoreData;
 import java.io.FileWriter;
 import java.io.IOException;
